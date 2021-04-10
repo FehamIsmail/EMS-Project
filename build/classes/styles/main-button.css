@@ -1,0 +1,32 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 1-Apr-2021, 4:56:57 PM
+    Author     : ismai
+*/
+
+.button {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-font-family: "Georgia";
+    -fx-font-weight: bold;
+    -fx-font-size: 30px;
+    -fx-text-fill: #206eac; 
+}
+
+.button:hover {
+    -fx-border-color: transparent, #17578a;
+    -fx-border-width: 3;
+    -fx-border-radius: 3;
+    -fx-border-insets: 1 1 1 1, 0;
+}
+
+.button:pressed {
+    -fx-background-color: white;
+    -fx-text-fill: #206eac;
+}
