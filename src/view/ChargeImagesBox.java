@@ -6,7 +6,7 @@
  */
 package view;
 
-import model.ChargeImage;
+import fieldmodel.ChargeImage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.nio.channels.Channels;
@@ -49,13 +49,8 @@ public class ChargeImagesBox extends HBox{
         return positive;
     }
 
-
     public ChargeImage getNegative() {
         return negative;
     }
-
-
-    
-    
     
 }

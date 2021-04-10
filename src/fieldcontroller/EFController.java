@@ -1,4 +1,4 @@
-package GUIController;
+package fieldcontroller;
 
 import java.awt.Toolkit;
 import java.io.FileNotFoundException;
@@ -23,12 +23,12 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.StrokeType;
 import javafx.stage.Stage;
-import model.Charge;
-import model.ChargeImage;
-import model.EFVector;
-import model.ElectricField;
-import model.Prefix;
-import model.PrefixValue;
+import fieldmodel.Charge;
+import fieldmodel.ChargeImage;
+import fieldmodel.EFVector;
+import fieldmodel.ElectricField;
+import fieldmodel.Prefix;
+import fieldmodel.PrefixValue;
 import view.ChargeImagesBox;
 import view.GraphPane;
 import view.RightBorder;

@@ -57,7 +57,6 @@ public class GraphPane extends StackPane{
         
         ImageView y = new ImageView(new Image("images/y-axis.png"));
         y.setTranslateX(-672-14);
-        y.setTranslateY(-1);
         
         insertElement(x);
         insertElement(y);
@@ -82,7 +81,7 @@ public class GraphPane extends StackPane{
     }
     
     public void insertLabelAxis(double size){
-        //x-axis
+        
         if(!xLabels.isEmpty() || !yLabels.isEmpty()){
             for(Label l : xLabels){
                 this.removeElement(l);
@@ -96,6 +95,7 @@ public class GraphPane extends StackPane{
         double a = 0;
         double b = 0;
         double ratio = (size*2)/24;
+        //x-axis
         for(int i=0;i<columns;i++){
             a = i - 12; 
             b = a * ratio;
@@ -105,6 +105,7 @@ public class GraphPane extends StackPane{
             xLabels.add(l);
             insertElement(l);
         }
+        //y-axis
         for(int j=0;j<rows;j++){
             a = j - 7; 
             b = -a * ratio;

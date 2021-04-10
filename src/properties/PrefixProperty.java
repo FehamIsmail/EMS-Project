@@ -6,8 +6,7 @@
 package properties;
 
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import model.Prefix;
+import fieldmodel.Prefix;
 
 /**
  *

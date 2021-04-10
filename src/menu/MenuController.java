@@ -5,13 +5,13 @@
  */
 package menu;
 
-import GUIController.EFController;
+import fieldcontroller.EFController;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import motionelectricfieldsimulation.MotionController;
+import motioncontroller.MotionController;
 import motionview.SimWindow;
 import view.ElectricFieldPane;
 
@@ -20,7 +20,7 @@ import view.ElectricFieldPane;
  * @author ismai
  */
 public class MenuController {
-    private Scene menuScene; // fieldScene, forceScene, motionScene; 
+    private Scene menuScene;
     private Stage menuStage;
     private MainMenu menu;
     private MenuBorder menuBorder;
@@ -78,8 +78,6 @@ public class MenuController {
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                //stage.setScene(fieldScene);
-                //fieldPane.getItemMenu().setOnAction(e1-> goToMainMenu(stage));
         });
         menu.getMotionButton().setOnAction(e -> goToMotion());
         menu.getExitButton().setOnAction(e -> System.exit(0));
@@ -95,11 +93,6 @@ public class MenuController {
         });
         menuBorder.getItemMotion().setOnAction(e -> goToMotion());
         menuBorder.getItemExit().setOnAction(e -> System.exit(0));
-                //stage.setScene(fieldScene);
-                //fieldPane.getItemMenu().setOnAction(e1-> goToMainMenu(stage));
-        
-        
-        
     }
     
     

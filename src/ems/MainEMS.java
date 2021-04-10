@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ElectricFieldSimulation;
+package ems;
 
 import java.io.FileNotFoundException;
 import javafx.application.Application;
@@ -14,7 +14,7 @@ import menu.MenuController;
  *
  * @author ismail
  */
-public class ElectricFieldSimulation extends Application {
+public class MainEMS extends Application {
     
     @Override
     public void start(Stage stage) throws FileNotFoundException {

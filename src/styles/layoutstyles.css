@@ -74,17 +74,5 @@ and open the template in the editor.
 .main-pane{
     -fx-padding: 0 20 80 20;
 }
-/*
-.menu-bar{
-    -fx-background-color: #206eac;
-}
-
-.menu-item{
-    -fx-background-color: white;
-}
-
-.menu{
-    -fx-background-color: gray;
-}*/
 
 
