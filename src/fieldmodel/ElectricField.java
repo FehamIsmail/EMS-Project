@@ -33,7 +33,6 @@ public class ElectricField {
     }
 
     public ElectricField(double x, double y, Charge q, double ratio, double gPrefix) {
-        //System.out.println("\n========================================");
         this.ratio = ratio;
         x = x - 672;
         y = 392 - y;
@@ -57,7 +56,6 @@ public class ElectricField {
         distance = distance * ratio;
         //distance in m
         distance = distance * (gPrefix);
-        //System.out.println("distance: " + distance);
         return distance;
     }
     
@@ -65,27 +63,23 @@ public class ElectricField {
         double deltaX = Math.abs(x1-x);
         double deltaY = Math.abs(y1-y);
         double angle  = Math.atan(deltaY/deltaX);
-        //System.out.println("angle :"+ angle);
         return angle;
     }
     
     public double calculateElectricField(double x, double y, Charge q){
-        //System.out.println("Charge :" + q.getAbsolutecharge());
+        //Calculating the magnitude, and the vector's x and y component
         magnitude = 8990000000.0 * q.getAbsolutecharge() * (1/Math.pow(distance, 2));
-        //System.out.println("magnitude: "+ magnitude);
-        
         x = Math.cos(angle)*magnitude;
+        y = Math.sin(angle)*magnitude;
+        //Inversing the values if needed
         if(xpositive != q.isPositive()){
             x = -x;
         }
-        y = Math.sin(angle)*magnitude;
         if(ypositive != q.isPositive()){
             y = -y;
         }
         this.x = x;
         this.y = y;
-//        System.out.println("x: " + x);
-//        System.out.println("y: " + y);
         return magnitude;
     }
     
@@ -93,15 +87,12 @@ public class ElectricField {
         double sumX = 0;
         double sumY = 0;
         for(ElectricField e : list){
-            //System.out.println(e);
             sumX += e.getX();
             sumY += e.getY();
         }
-        //sumX += 0.0000000000001;
-        //sumY += 0.0000000000001;
         //Calculate magnitude
         double magnitude = Math.sqrt(Math.pow(sumX, 2) + Math.pow(sumY, 2));
-        //Calculate angle
+        //Calculate angle depending on the quadrant
         double newangle = Math.atan(Math.abs(sumY)/Math.abs(sumX));
         if     (sumX > 0 && sumY < 0) newangle = (Math.PI*2) - newangle;
         else if(sumX < 0 && sumY < 0) newangle =  Math.PI    + newangle;

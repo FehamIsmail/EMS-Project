@@ -11,6 +11,7 @@ package fieldmodel;
  */
 
 public class PrefixValue {
+    //Converts a Prefix to its corresponding numberical value
     public static double getPrefixValue(Prefix unit){
         switch(unit){
             case P:

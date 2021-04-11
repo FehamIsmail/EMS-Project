@@ -5,6 +5,7 @@
  */
 package menu;
 
+import chargecontroller.ChargeController;
 import fieldcontroller.EFController;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
@@ -14,6 +15,7 @@ import javafx.stage.Stage;
 import motioncontroller.MotionSimController;
 import motionview.SimWindow;
 import fieldview.ElectricFieldPane;
+import javafx.scene.layout.BorderPane;
 
 /**
  *
@@ -30,6 +32,9 @@ public class MenuController {
     //Charge Motion
     private SimWindow motionPane;
     private MotionSimController motionController;
+    //Charge Force (Coulomb's Law)
+    private BorderPane chargePane;
+    private ChargeController chargeController;
     
     
 
@@ -37,33 +42,59 @@ public class MenuController {
         this.menu = new MainMenu();
         this.menuBorder = new MenuBorder();
         this.menuBorder.setCenter(menu);
-        //goToElectricField();
     }
     
     private void goToElectricField() throws FileNotFoundException{
+        //Change styling
+        this.menuScene.getStylesheets().remove(0);
+        this.menuScene.getStylesheets().add("styles/layoutstyles.css");
         //Auto-size by going through the main menu first
         //This method fixes a sizing bug
         menu.setVisible(false);
         goToMainMenu();
         menu.setVisible(true);
-        
+        //Changing center
         fieldController = new EFController();
         fieldPane = fieldController.getFieldPane();
         this.menuBorder.setCenter(fieldPane);
         
     }
     
+    private void goToForce(){
+        //Change styling
+        this.menuScene.getStylesheets().remove(0);
+        this.menuScene.getStylesheets().add("styles/stylesheet.css");
+        chargeController = new ChargeController();
+        chargePane = chargeController.setView();
+        //Changing center
+        this.menuBorder.setCenter(chargePane);
+        sizeScene();
+        
+    }
+    
     private void goToMainMenu(){
+        //Change styling
+        this.menuScene.getStylesheets().remove(0);
+        this.menuScene.getStylesheets().add("styles/layoutstyles.css");
+        //Changing center
         this.menuBorder.setCenter(menu);
-        this.menuBorder.autosize();
-        this.menuStage.sizeToScene();
+        sizeScene();
+        
     }
     
     private void goToMotion(){
+        //Change styling
+        this.menuScene.getStylesheets().remove(0);
+        this.menuScene.getStylesheets().add("styles/layoutstyles.css");
         motionController = new MotionSimController();
         motionPane = motionController.getSimWindow();
+        //Changing center
         this.menuBorder.setCenter(motionPane);
-        //Auto size
+        sizeScene();
+        
+    }
+    //Auto sizes the scene depending on the simulation
+    private void sizeScene(){
         this.menuBorder.autosize();
         this.menuStage.sizeToScene();
     }
@@ -81,7 +112,7 @@ public class MenuController {
         });
         menu.getMotionButton().setOnAction(e -> goToMotion());
         menu.getExitButton().setOnAction(e -> System.exit(0));
-        
+        menu.getForceButton().setOnAction(e -> goToForce());
         //Setting MenuBar items
         menuBorder.getItemMenu().setOnAction(e -> goToMainMenu());
         menuBorder.getItemField().setOnAction(e -> {
@@ -92,8 +123,8 @@ public class MenuController {
             }
         });
         menuBorder.getItemMotion().setOnAction(e -> goToMotion());
+        menuBorder.getItemForce().setOnAction(e -> goToForce());
         menuBorder.getItemExit().setOnAction(e -> System.exit(0));
-        
     }
     
     
