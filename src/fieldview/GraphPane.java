@@ -43,7 +43,7 @@ public class GraphPane extends StackPane{
         insertElement(grid);
         
         this.statusLabel = new Label();
-        this.statusLabel.setTranslateY(-470);
+        this.statusLabel.setTranslateY(-460);
         this.statusLabel.setFont(new Font("Segoe UI", 16));
         this.setAlignment(Pos.CENTER);
         this.getStyleClass().add("graph");
