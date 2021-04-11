@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import motioncontroller.MotionSimController;
 import motionview.SimWindow;
 import fieldview.ElectricFieldPane;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -136,6 +137,7 @@ public class MenuController {
         menuStage.setTitle("EMS - Electricity and Magnetism Simulators");
         menuStage.setScene(menuScene);
         menuStage.setResizable(false);
+        menuStage.getIcons().add(new Image("images/EMS_logo.png"));
         menuStage.show();
         
         setMenuButtonHandlers(stage);
