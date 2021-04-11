@@ -11,10 +11,10 @@ import motionview.SimWindow;
  *
  * @author ismai
  */
-public class MotionController {
+public class MotionSimController {
     private SimWindow simPane;
 
-    public MotionController() {
+    public MotionSimController() {
         simPane = new SimWindow();
         InputHandler inputHandler = new InputHandler(simPane);
         OutputController outputController = new OutputController(simPane, inputHandler.getValueMap());
@@ -29,7 +29,7 @@ public class MotionController {
         }));
     }
 
-    public SimWindow getSimPane() {
+    public SimWindow getSimWindow() {
         return simPane;
     }
     

@@ -55,29 +55,26 @@ public class InputPane extends VBox{
         
         double width = 350.0;
         
-        //Set text formatters for the TextFields
-        mass.setTextFormatter(new DecimalTextFormatter(0, 3, false, 4));
-        posX.setTextFormatter(new DecimalTextFormatter(0, 3, true, 3));
-        posY.setTextFormatter(new DecimalTextFormatter(0, 3, true, 3));
-        velMag.setTextFormatter(new DecimalTextFormatter(0, 3, true, 9));
-        velDir.setTextFormatter(new DecimalTextFormatter(0, 3, false, 3));
-        charge.setTextFormatter(new DecimalTextFormatter(0, 3, true, 6));
-        fieldMag.setTextFormatter(new DecimalTextFormatter(0, 3, true, 6));
-        stop.setTextFormatter(new DecimalTextFormatter(0, 3, true, 6));
+        //Set the Prompt Text for the TextFields
+        mass.setPromptText("mass (kg)");
+        posX.setPromptText("x position (m)");
+        posY.setPromptText("y position (m)");
+        velMag.setPromptText("magnitude (m/s)");
+        velDir.setPromptText("direction (deg)");
+        charge.setPromptText("charge magnitude (C)");
+        fieldMag.setPromptText("field magnitude (N/C)");
+        stop.setPromptText("boundary condition (m)");
         
         //Style of the GridPane columns
         ColumnConstraints headerColumn = new ColumnConstraints();
         headerColumn.setPercentWidth(24.0);
-        ColumnConstraints magnitudeColumn = new ColumnConstraints();
-        magnitudeColumn.setMinWidth(100);
-        ColumnConstraints magnitudeValue = new ColumnConstraints();
-        magnitudeValue.setMinWidth(124);
         ColumnConstraints otherColumns = new ColumnConstraints();
         otherColumns.setPercentWidth((100.0-24.0)/2.0);
         
         paneTitle.setStyle("-fx-font-size: 30; -fx-font-weight: bold; fx-font-family: Segoe UI;");
         paneTitle.setUnderline(true);
         
+        //Set up the "CHARGE PROPERTIES" section
         chargePane.setVgap(3);
         chargePane.setMinWidth(width);chargePane.setMaxWidth(width);
         chargePane.getColumnConstraints().addAll(headerColumn, otherColumns, otherColumns);
@@ -85,25 +82,27 @@ public class InputPane extends VBox{
         chargeLabel.setStyle("-fx-font-size: 16; fx-font-family: Segoe UI;");
         chargeLabel.setUnderline(true);
         chargePane.add(chargeLabel, 0, 0, 3, 1);
-        chargePane.add(new Label("Mass (kg): "), 0, 1, 1, 1);
+        chargePane.add(new Label("Mass: "), 0, 1, 1, 1);
         chargePane.add(mass, 1, 1, 2, 1);
-        chargePane.addRow(2, new Label("Position (m): "), posX, posY);
-        chargePane.addRow(3, new Label("Velocity (m/s): "), velMag, velDir);
-        chargePane.addRow(4, new Label("Charge (C): "));
+        chargePane.addRow(2, new Label("Position: "), posX, posY);
+        chargePane.addRow(3, new Label("Velocity: "), velMag, velDir);
+        chargePane.addRow(4, new Label("Charge: "));
         chargePane.add(charge, 1, 4, 2, 1);
         
+        //Set up the "FIELD PROPERTIES" section
         fieldPane.setVgap(3);
         fieldPane.setMinWidth(width);fieldPane.setMaxWidth(width);
-        fieldPane.getColumnConstraints().addAll(magnitudeColumn, magnitudeValue, magnitudeValue);
+        fieldPane.getColumnConstraints().addAll(headerColumn, otherColumns, otherColumns);
         Label fieldLabel = new Label("Field properties");
         fieldLabel.setStyle("-fx-font-size: 16; fx-font-family: Segoe UI;");
         fieldLabel.setUnderline(true);
         fieldPane.add(fieldLabel, 0, 0, 3, 1);
-        fieldPane.add(new Label("Magnitude (N/C): "), 0, 1, 1, 1);
+        fieldPane.add(new Label("Magnitude: "), 0, 1, 1, 1);
         fieldPane.add(fieldMag, 1, 1, 2, 1);
         isVfield.setPrefWidth(350.0);
         fieldPane.add(isVfield, 0, 2, 3, 1);
         
+        //Set up the "STOP CONDITION" section
         stopPane.setVgap(3);
         stopPane.setMinWidth(width);stopPane.setMaxWidth(width);
         stopPane.getColumnConstraints().addAll(headerColumn, otherColumns, otherColumns);
@@ -112,12 +111,15 @@ public class InputPane extends VBox{
         stopPane.add(isVbound, 0, 1, 1, 1);
         stopPane.add(stop, 1, 1, 2, 1);
         
+        //This space is used to ensure that the CALCULATE button is at the bottom of the Vbox
         Region space = new Region();
         VBox.setVgrow(space, Priority.ALWAYS);
         
+        //This text displays messages regarding the inputs
         exMessage.setStyle("-fx-font-size: 18;");
         exMessage.setWrapText(true);
         
+        //The "CALCULATE" button
         startButton.setTranslateY(-50);
         startButton.setPrefSize(300.0, 100.0);
         startButton.setStyle("-fx-font-size: 30; -fx-font-weight: bold; -fx-font-family: Segoe UI;");

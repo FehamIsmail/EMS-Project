@@ -14,6 +14,9 @@ import motionview.SimWindow;
 /**
  *
  * @author Jeffrey Gan
+ * 
+ * Collects the values from the control elements of the GUI and does
+ * the necessary calculations to compute missing desired information.
  */
 public class InputHandler {
     //constant values
@@ -63,6 +66,7 @@ public class InputHandler {
         this.view = view;
     }
     
+    //The group of functions that are called when the "CALCULATE" button is pressed.
     public void onAction(){
         reset();
         getInputs();
@@ -79,14 +83,14 @@ public class InputHandler {
 
         //get the values from the textfields and detect invalid values
         try {
-            mass       = Double.parseDouble(view.input.mass.getText());
-            initPosX   = Double.parseDouble(view.input.posX.getText());
-            initPosY   = Double.parseDouble(view.input.posY.getText());
-            initVelMag = Double.parseDouble(view.input.velMag.getText());
-            initVelDir = Double.parseDouble(view.input.velDir.getText());
-            charge     = Double.parseDouble(view.input.charge.getText());
-            fieldMag   = Double.parseDouble(view.input.fieldMag.getText());
-            stop       = Double.parseDouble(view.input.stop.getText());
+            mass       = Double.parseDouble(view.input.mass.getText().toUpperCase());
+            initPosX   = Double.parseDouble(view.input.posX.getText().toUpperCase());
+            initPosY   = Double.parseDouble(view.input.posY.getText().toUpperCase());
+            initVelMag = Double.parseDouble(view.input.velMag.getText().toUpperCase());
+            initVelDir = Double.parseDouble(view.input.velDir.getText().toUpperCase());
+            charge     = Double.parseDouble(view.input.charge.getText().toUpperCase());
+            fieldMag   = Double.parseDouble(view.input.fieldMag.getText().toUpperCase());
+            stop       = Double.parseDouble(view.input.stop.getText().toUpperCase());
 
             if(mass<0.0){
                 throw new NegativeMassException();
@@ -94,20 +98,12 @@ public class InputHandler {
             else if(mass.equals(0.0)){
                 throw new ZeroMassException();
             }
-            else if(isVbound){
-                if(initPosX > stop){
-                    throw new InvalidPositionException();
-                }
-            }
-            else if(!isVbound){
-                if(initPosY > stop){
-                    throw new InvalidPositionException();
-                }
-            }
 
         } 
         catch (NumberFormatException nfe) {
-            String nfeMessage = "Number Format Exception! Please enter valid numbers only\n";
+            String nfeMessage = 
+                    "Number Format Exception! Please enter valid numbers only.\n"
+                    + "Examples of valid numbers: 123, 3.8E+12, 94.2e-26";
             addToErrorString(nfeMessage);
         } 
         catch (NegativeMassException nme) {
@@ -117,10 +113,6 @@ public class InputHandler {
         catch (ZeroMassException zme) {
             String zmeMessage = "Zero Mass! Please enter a positive mass\n";
             addToErrorString(zmeMessage);
-        }
-        catch (InvalidPositionException ipe){
-            String ipeMessage = "                          Invalid position!\nThe initial position is greater than the stop limit\n";
-            addToErrorString(ipeMessage);
         }
 
         if(hasException){
@@ -132,6 +124,8 @@ public class InputHandler {
             view.input.exMessage.setTextFill(Paint.valueOf("#3672d1"));
         }
     };
+    
+    //This function first calculates the value of time, and then calculates the missing information.
     private void calculate(){
         diffTime = 0.0;
         initVelX = initVelMag*Math.cos(Math.toRadians(initVelDir));
@@ -140,25 +134,27 @@ public class InputHandler {
         finalVelY = initVelY;
         
         double accel = charge*fieldMag/mass;
-        
-        if      (isVbound&&isVfield){ //xfinal = stop, vertical acceleration
+        if(accel == 0.0){//no acceleration
+            if(isVbound){
+                finalPosX = stop;
+                diffX = finalPosX-initPosX;
+                diffTime = diffX/initVelX;
+            }else{
+                finalPosY = stop;
+                diffY = finalPosY-initPosY;
+                diffTime = diffY/initVelY;
+            }
+            
+            if(diffTime<0){
+                diffTime = Double.POSITIVE_INFINITY;
+            }
+            
+        }else if(isVbound&&isVfield){ //xfinal = stop, vertical acceleration
             accelY = accel;
             finalPosX = stop;
             diffX = finalPosX - initPosX;
             
             diffTime = diffX/initVelX;
-            if(diffTime<0){
-                diffTime = Double.POSITIVE_INFINITY;
-            }
-            
-            finalVelY = initVelY + accelY*diffTime;
-            finalPosY = initPosY + initVelY*diffTime + 0.5*accelY*diffTime*diffTime;
-            diffY = finalPosY - initPosY;
-            
-            finalVelDir = Math.toDegrees(Math.atan2(finalVelY, finalVelX));
-            diffVelDir = finalVelDir - initVelDir;
-            diffVelX = finalVelX - initVelX;
-            diffVelY = finalVelY-initVelY;
             
         }else if(isVbound&&!isVfield){//xfinal = stop, horizontal acceleration
             accelX = accel;
@@ -173,18 +169,7 @@ public class InputHandler {
                 double time0 = -initVelX/accelX;
                 double time1 = -finalVelX/accelX;
                 diffTime = time0+time1;
-                finalVelX = -finalVelX;
-                diffVelX = finalVelX - initVelX;
             }
-            
-            finalPosY = initPosY + initVelY*diffTime + 0.5*accelY*diffTime*diffTime;
-            diffY = finalPosY - initPosY;
-            
-            finalVelDir = Math.toDegrees(Math.atan2(finalVelY, finalVelX));
-            diffVelDir = finalVelDir - initVelDir;
-            
-            diffVelY = finalVelY-initVelY;
-            
             
         }else if(!isVbound&&isVfield){//yfinal = stop, vertical acceleration
             accelY = accel;
@@ -199,16 +184,7 @@ public class InputHandler {
                 double time0 = -initVelY/accelY;
                 double time1 = -finalVelY/accelY;
                 diffTime = time0+time1;
-                finalVelX = -finalVelX;
-                diffVelX = finalVelX - initVelX;
             }
-            
-            finalPosX = initPosX + initVelX*diffTime + 0.5*accelX*diffTime*diffTime;
-            diffX = finalPosX - initPosX;
-            
-            finalVelDir = Math.toDegrees(Math.atan2(finalVelY, finalVelX));
-            diffVelDir = finalVelDir - initVelDir;
-            diffVelX = finalVelX - initVelX;
             
         }else if(!isVbound&&!isVfield){//yfinal = stop, horizontal acceleration
             accelX = accel;
@@ -216,20 +192,24 @@ public class InputHandler {
             diffY = finalPosY - initPosY;
             
             diffTime = diffY/initVelY;
-            if(diffTime<0){
-                diffTime = Double.POSITIVE_INFINITY;
-            }
             
-            finalVelX = initVelX + accelX*diffTime;
-            finalPosX = initPosX + initVelX*diffTime + 0.5*accelX*diffTime*diffTime;
-            diffX = finalPosX - initPosX;
-            
-            finalVelDir = Math.toDegrees(Math.atan2(finalVelY, finalVelX));
-            diffVelDir = finalVelDir - initVelDir;
-            diffVelX = finalVelX - initVelX;
-            diffVelY = finalVelY-initVelY;
         }
-            
+        if(diffTime<0){
+            diffTime = Double.POSITIVE_INFINITY;
+        }
+        
+        finalPosX = initPosX + initVelX*diffTime;
+        diffX = finalPosX - initPosX;
+        finalVelX = initVelX + accelX*diffTime;
+        diffVelX = finalVelX - initVelX;
+        
+        finalPosY = initPosY + initVelY*diffTime;
+        diffY = finalPosY - initPosY;
+        finalVelY = initVelY + accelY*diffTime;
+        diffVelY = finalVelY - initVelY;
+        
+        finalVelDir = Math.toDegrees(Math.atan2(finalVelY, finalVelX));
+        diffVelDir = finalVelDir - initVelDir;
         
     }
     
@@ -307,8 +287,8 @@ public class InputHandler {
         return valueMap;
     }
     
-    
-    
+    //This sets the action of the buttons that selects
+    //the axis of the field and the axis of the stop condition
     private void setToggleButtonAction(InputPane inputPane){
         inputPane.isVbound.setOnAction((ActionEvent event) -> {
             if(isVbound){
@@ -351,10 +331,6 @@ public class InputHandler {
     }
     private class NegativeMassException extends Exception{
         private NegativeMassException() {
-        }
-    }
-    private class InvalidPositionException extends Exception{
-        private InvalidPositionException() {
         }
     }
 }

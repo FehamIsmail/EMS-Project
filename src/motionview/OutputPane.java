@@ -17,10 +17,11 @@ import javafx.scene.layout.VBox;
 /**
  *
  * @author Jeffrey Gan
+ * 
+ * A Pane that has all the Labels necessary for displaying useful variable values.
  */
 public class OutputPane extends VBox{
     
-    private Label paneTitle = new Label("Output");
     private GridPane infoPane = new GridPane();
     
     //initial values
@@ -62,8 +63,6 @@ public class OutputPane extends VBox{
         this.getStyleClass().add("motion-vbox");
         //this.setStyle("-fx-background-color: gainsboro; -fx-font-size: 15;");
         this.setPadding(new Insets(20));
-        
-        paneTitle.setStyle("-fx-font-size: 30; -fx-font-weight: bold;");
         
         ColumnConstraints headerColumn = new ColumnConstraints();
         headerColumn.setPercentWidth(16.0);
@@ -132,7 +131,11 @@ public class OutputPane extends VBox{
         
         this.getChildren().addAll(infoPane);
     }
-    
+    /**
+     * A HBox that contains two Labels
+     * The first Label displays the numerical value
+     * The second Label displays the unit of the value
+     */
     public final class UnitLabel extends HBox{
         private String unit;
         private Double value;

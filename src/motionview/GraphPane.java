@@ -20,16 +20,30 @@ import javafx.scene.transform.Rotate;
 /**
  *
  * @author Jeffrey Gan
+  
+ * An AnchorPane that contains the elements of the coordinate graph.
+ * 
+ * The graph shows the position of a point relative to the origin, in meters.
+ * The trajectory of the charged particle is shown as a blue line.
+ * The boundary set by the user is shown as a thick red line.
+ * The direction of the electric field is shown by 6 arrows that point in the direction.
  */
 public class GraphPane extends AnchorPane{
+    //Graph elements (LineChart)
     private NumberAxis xAxis = new NumberAxis();
     private NumberAxis yAxis = new NumberAxis();
     private LineChart<Number, Number> chart = new LineChart(xAxis, yAxis);
     
+    //Series for the position data
+    //Two Series are used to be able to properly represent a trajectory that
+    //moves both in the positive and negative x direction.
     private XYChart.Series positionData0 = new XYChart.Series<>();
     private XYChart.Series positionData1 = new XYChart.Series<>();
+    
+    //Series used to create the line representing the boundary (final position)
     private XYChart.Series stopData = new XYChart.Series<>();
     
+    //The pane that represents the direction of the electric field
     private FieldPane fieldLines = new FieldPane();
     
     public GraphPane() {
@@ -37,7 +51,6 @@ public class GraphPane extends AnchorPane{
         this.setPrefSize(790.0, 390.0);
         this.setMaxSize(790.0, 390.0);
         this.getStyleClass().add("motion-vbox");
-        //this.setStyle("-fx-background-color: gainsboro; -fx-font-size: 15;");
         this.setPadding(new Insets(10));
         
         AnchorPane.setTopAnchor(chart, 0.0);
@@ -58,13 +71,13 @@ public class GraphPane extends AnchorPane{
         xAxis.setAnimated(false);
         yAxis.setAnimated(false);
                 
-        Label xLabel = new Label("x");
+        Label xLabel = new Label("x (m)");
         AnchorPane.setRightAnchor(xLabel, 10.0);
         AnchorPane.setBottomAnchor(xLabel, 10.0);
         
-        Label yLabel = new Label("y");
-        AnchorPane.setLeftAnchor(yLabel, 10.0);
-        AnchorPane.setTopAnchor(yLabel, 0.0);
+        Label yLabel = new Label("y (m)");
+        AnchorPane.setLeftAnchor(yLabel, 8.0);
+        AnchorPane.setTopAnchor(yLabel, -4.0);
         
         AnchorPane.setTopAnchor(fieldLines, 15.0);
         AnchorPane.setRightAnchor(fieldLines, 14.0);
@@ -101,6 +114,7 @@ public class GraphPane extends AnchorPane{
         this.fieldLines.setFieldDirection(dir);
     }
     
+    //Pane that represents the direction of the electric field.
     private class FieldPane extends AnchorPane{
         private final int width = 698;
         private final int height = 303;

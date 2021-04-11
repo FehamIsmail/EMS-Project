@@ -11,7 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import motioncontroller.MotionController;
+import motioncontroller.MotionSimController;
 import motionview.SimWindow;
 import fieldview.ElectricFieldPane;
 
@@ -29,7 +29,7 @@ public class MenuController {
     private EFController fieldController;
     //Charge Motion
     private SimWindow motionPane;
-    private MotionController motionController;
+    private MotionSimController motionController;
     
     
 
@@ -60,8 +60,8 @@ public class MenuController {
     }
     
     private void goToMotion(){
-        motionController = new MotionController();
-        motionPane = motionController.getSimPane();
+        motionController = new MotionSimController();
+        motionPane = motionController.getSimWindow();
         this.menuBorder.setCenter(motionPane);
         //Auto size
         this.menuBorder.autosize();
