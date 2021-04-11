@@ -135,9 +135,9 @@ public class EFController {
     }
     
     public Charge createNewCharge(double charge, Prefix prefix, double x, double y, boolean isPositive){
-        Charge q = new Charge(charge, prefix, mouseX-773, mouseY-565, isPositive, ratio);
+        Charge q = new Charge(charge, prefix, mouseX-773, mouseY-518, isPositive, ratio);
         q.getImage().setTranslateX(mouseX-773);
-        q.getImage().setTranslateY(mouseY-565);
+        q.getImage().setTranslateY(mouseY-518);
         q.getSelectedImage().setTranslateX(q.getImage().getTranslateX());
         q.getSelectedImage().setTranslateY(q.getImage().getTranslateY());
         //Set handler to the new charge
@@ -178,7 +178,7 @@ public class EFController {
         getGraph().setOnDragDropped(new EventHandler <DragEvent>(){
             @Override
             public void handle(DragEvent event) {             
-                    if(mouseX < 101 || mouseX > 1445 || mouseY > 957 || mouseY < 173){
+                    if(mouseX < 101 || mouseX > 1445 || mouseY > 910 || mouseY < 126){
                         getBorder().getError().setText("Position out of bounds.\nPlease try again.");
                         getBorder().getErrorBox().setVisible(true);
                     }else{

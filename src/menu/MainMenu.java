@@ -8,8 +8,8 @@ package menu;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -33,28 +33,34 @@ public class MainMenu extends StackPane{
         this.setAlignment(Pos.CENTER);
         setButtons();
         this.setPrefWidth(1920);
-        this.setPrefHeight(1080);
+        this.setPrefHeight(1000);
+        Image BgImage = new Image("images/EMS_background.png");
+        ImageView BgImageView = new ImageView(BgImage);
+        BgImageView.setScaleY(0.90);
         
-        this.setBackground(new Background(new BackgroundImage(new Image("images/EMS_background.png"), BackgroundRepeat.NO_REPEAT,
+                
+        
+        
+        this.setBackground(new Background(new BackgroundImage(BgImageView.getImage(), BackgroundRepeat.NO_REPEAT,
                            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
     }
     
     private void setButtons(){
         fieldButton.getStylesheets().add("styles/main-button.css");
         fieldButton.setTranslateX(0);
-        fieldButton.setTranslateY(-20);
+        fieldButton.setTranslateY(30);
         
         forceButton.getStylesheets().add("styles/main-button.css");
         forceButton.setTranslateX(0);
-        forceButton.setTranslateY(80);
+        forceButton.setTranslateY(130);
         
         motionButton.getStylesheets().add("styles/main-button.css");
         motionButton.setTranslateX(0);
-        motionButton.setTranslateY(180);
+        motionButton.setTranslateY(230);
         
         exitButton.getStylesheets().add("styles/main-button.css");
         exitButton.setTranslateX(0);
-        exitButton.setTranslateY(280);
+        exitButton.setTranslateY(330);
         
         this.insertElement(fieldButton);
         this.insertElement(forceButton);
