@@ -43,9 +43,10 @@ public class GraphController {
         minY = 0.0;
         maxX = 0.0;
         maxY = 0.0;
-        
-        if(timeMax.isInfinite() || timeMax.isNaN()){
-            timeMax = 100.0;
+        if(timeMax != null){
+            if(timeMax.isInfinite() || timeMax.isNaN()){
+                timeMax = 100.0;
+            }
         }
         
         int limit = 10;

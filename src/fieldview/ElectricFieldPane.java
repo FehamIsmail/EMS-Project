@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package fieldview;
 
 import java.io.FileNotFoundException;
 import javafx.scene.control.Label;
@@ -28,6 +28,7 @@ public class ElectricFieldPane extends BorderPane{
         
         this.setPrefHeight(1080);
         this.setPrefHeight(1920);
+        this.getStyleClass().add("main-pane");
         
         this.setCenter(grid);
         this.setRight(border);

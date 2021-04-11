@@ -13,7 +13,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import motioncontroller.MotionController;
 import motionview.SimWindow;
-import view.ElectricFieldPane;
+import fieldview.ElectricFieldPane;
 
 /**
  *
@@ -93,6 +93,7 @@ public class MenuController {
         });
         menuBorder.getItemMotion().setOnAction(e -> goToMotion());
         menuBorder.getItemExit().setOnAction(e -> System.exit(0));
+        
     }
     
     
@@ -103,6 +104,7 @@ public class MenuController {
         menuStage = stage;
         menuStage.setTitle("EMS - Electricity and Magnetism Simulators");
         menuStage.setScene(menuScene);
+        menuStage.setResizable(false);
         menuStage.show();
         
         setMenuButtonHandlers(stage);

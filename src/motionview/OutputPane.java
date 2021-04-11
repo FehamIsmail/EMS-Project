@@ -5,7 +5,6 @@
  */
 package motionview;
 
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -13,10 +12,7 @@ import javafx.scene.control.Separator;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 
 /**
  *
@@ -24,7 +20,7 @@ import javafx.scene.text.Font;
  */
 public class OutputPane extends VBox{
     
-    private Label paneTitle = new Label("OUTPUT");
+    private Label paneTitle = new Label("Output");
     private GridPane infoPane = new GridPane();
     
     //initial values
@@ -63,7 +59,8 @@ public class OutputPane extends VBox{
         this.setPrefSize(790.0, 390.0);
         this.setMaxSize(790.0, 390.0);
         this.setAlignment(Pos.TOP_LEFT);
-        this.setStyle("-fx-background-color: gainsboro; -fx-font-size: 15;");
+        this.getStyleClass().add("motion-vbox");
+        //this.setStyle("-fx-background-color: gainsboro; -fx-font-size: 15;");
         this.setPadding(new Insets(20));
         
         paneTitle.setStyle("-fx-font-size: 30; -fx-font-weight: bold;");
@@ -74,17 +71,23 @@ public class OutputPane extends VBox{
         otherColumns.setPercentWidth((100.0-16.0)/3.0);
         
         //infoPane.setGridLinesVisible(true);
+        infoPane.setPadding(new Insets(10));
         infoPane.setVgap(5);
         infoPane.setMinWidth(750.0); infoPane.setMaxWidth(750.0);
         infoPane.getColumnConstraints().addAll(
                 headerColumn,
                 otherColumns, otherColumns, otherColumns
         );
-        
+        Label initialValues = new Label("Initial Values");
+        initialValues.setUnderline(true);
+        Label finalValues = new Label("Final Values");
+        finalValues.setUnderline(true);
+        Label difference = new Label("Difference");
+        difference.setUnderline(true);
         infoPane.addRow(0, new Label(),
-                new Label("Initial Values"),
-                new Label("Final Values"),
-                new Label("Difference")
+                initialValues,
+                finalValues,
+                difference
         );
         int colIndex = -1;
         colIndex++; infoPane.addColumn(colIndex,
@@ -120,7 +123,9 @@ public class OutputPane extends VBox{
         
         int rowIndex = 6;
         rowIndex++; infoPane.add(new Separator(), 0, rowIndex, 4, 1);
-        rowIndex++; infoPane.add(new Label("Constant Values"), 1, rowIndex);
+        Label constantValues = new Label("Constant Values");
+        constantValues.setUnderline(true);
+        rowIndex++; infoPane.add(constantValues, 1, rowIndex);
         rowIndex++; infoPane.addRow(rowIndex, new Label("Mass:"), mass);
         rowIndex++; infoPane.addRow(rowIndex, new Label("Charge:"), charge);
         rowIndex++; infoPane.addRow(rowIndex, new Label("Field:"), fieldMag);

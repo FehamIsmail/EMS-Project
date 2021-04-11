@@ -22,8 +22,10 @@ public class MotionController {
         
         simPane.input.startButton.setOnAction(((event) -> {
             inputHandler.onAction();
-            outputController.setLabelValues();
-            graphController.plotAll();
+            if(!inputHandler.getHasException()){
+                outputController.setLabelValues();
+                graphController.plotAll();
+            }
         }));
     }
 

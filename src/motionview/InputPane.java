@@ -16,6 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import properties.DecimalTextFormatter;
 
 /**
  *
@@ -37,7 +38,7 @@ public class InputPane extends VBox{
     public Button startButton = new Button("Calculate");
     
     //Input Pane Elements
-    private final Label paneTitle = new Label("INPUT");
+    private Label paneTitle = new Label("Input");
     private final GridPane chargePane = new GridPane();
     private final GridPane fieldPane = new GridPane();
     private final GridPane stopPane = new GridPane();
@@ -49,45 +50,56 @@ public class InputPane extends VBox{
         this.setPrefWidth(390.0);
         this.setMaxWidth(390.0);
         this.setAlignment(Pos.TOP_CENTER);
-        this.setStyle("-fx-background-color: gainsboro; -fx-font-size: 15;");
+        this.getStyleClass().add("motion-vbox");
         this.setPadding(new Insets(20));
         
         double width = 350.0;
         
-        //Set the Prompt Text for the TextFields
-        mass.setPromptText("mass (kg)");
-        posX.setPromptText("x position (m)");
-        posY.setPromptText("y position (m)");
-        velMag.setPromptText("magnitude (m/s)");
-        velDir.setPromptText("direction (deg)");
-        charge.setPromptText("charge magnitude (C)");
-        fieldMag.setPromptText("field magnitude (N/C)");
-        stop.setPromptText("boundary condition (m)");
+        //Set text formatters for the TextFields
+        mass.setTextFormatter(new DecimalTextFormatter(0, 3, false, 4));
+        posX.setTextFormatter(new DecimalTextFormatter(0, 3, true, 3));
+        posY.setTextFormatter(new DecimalTextFormatter(0, 3, true, 3));
+        velMag.setTextFormatter(new DecimalTextFormatter(0, 3, true, 9));
+        velDir.setTextFormatter(new DecimalTextFormatter(0, 3, false, 3));
+        charge.setTextFormatter(new DecimalTextFormatter(0, 3, true, 6));
+        fieldMag.setTextFormatter(new DecimalTextFormatter(0, 3, true, 6));
+        stop.setTextFormatter(new DecimalTextFormatter(0, 3, true, 6));
         
         //Style of the GridPane columns
         ColumnConstraints headerColumn = new ColumnConstraints();
         headerColumn.setPercentWidth(24.0);
+        ColumnConstraints magnitudeColumn = new ColumnConstraints();
+        magnitudeColumn.setMinWidth(100);
+        ColumnConstraints magnitudeValue = new ColumnConstraints();
+        magnitudeValue.setMinWidth(124);
         ColumnConstraints otherColumns = new ColumnConstraints();
         otherColumns.setPercentWidth((100.0-24.0)/2.0);
         
-        paneTitle.setStyle("-fx-font-size: 30; -fx-font-weight: bold;");
+        paneTitle.setStyle("-fx-font-size: 30; -fx-font-weight: bold; fx-font-family: Segoe UI;");
+        paneTitle.setUnderline(true);
         
         chargePane.setVgap(3);
         chargePane.setMinWidth(width);chargePane.setMaxWidth(width);
         chargePane.getColumnConstraints().addAll(headerColumn, otherColumns, otherColumns);
-        chargePane.add(new Label("CHARGE PROPERTIES"), 0, 0, 3, 1);
-        chargePane.add(new Label("mass"), 0, 1, 1, 1);
+        Label chargeLabel = new Label("Charge Properties");
+        chargeLabel.setStyle("-fx-font-size: 16; fx-font-family: Segoe UI;");
+        chargeLabel.setUnderline(true);
+        chargePane.add(chargeLabel, 0, 0, 3, 1);
+        chargePane.add(new Label("Mass (kg): "), 0, 1, 1, 1);
         chargePane.add(mass, 1, 1, 2, 1);
-        chargePane.addRow(2, new Label("position"), posX, posY);
-        chargePane.addRow(3, new Label("velocity"), velMag, velDir);
-        chargePane.addRow(4, new Label("charge"));
+        chargePane.addRow(2, new Label("Position (m): "), posX, posY);
+        chargePane.addRow(3, new Label("Velocity (m/s): "), velMag, velDir);
+        chargePane.addRow(4, new Label("Charge (C): "));
         chargePane.add(charge, 1, 4, 2, 1);
         
         fieldPane.setVgap(3);
         fieldPane.setMinWidth(width);fieldPane.setMaxWidth(width);
-        fieldPane.getColumnConstraints().addAll(headerColumn, otherColumns, otherColumns);
-        fieldPane.add(new Label("FIELD PROPERTIES"), 0, 0, 3, 1);
-        fieldPane.add(new Label("magnitude"), 0, 1, 1, 1);
+        fieldPane.getColumnConstraints().addAll(magnitudeColumn, magnitudeValue, magnitudeValue);
+        Label fieldLabel = new Label("Field properties");
+        fieldLabel.setStyle("-fx-font-size: 16; fx-font-family: Segoe UI;");
+        fieldLabel.setUnderline(true);
+        fieldPane.add(fieldLabel, 0, 0, 3, 1);
+        fieldPane.add(new Label("Magnitude (N/C): "), 0, 1, 1, 1);
         fieldPane.add(fieldMag, 1, 1, 2, 1);
         isVfield.setPrefWidth(350.0);
         fieldPane.add(isVfield, 0, 2, 3, 1);
@@ -96,25 +108,28 @@ public class InputPane extends VBox{
         stopPane.setMinWidth(width);stopPane.setMaxWidth(width);
         stopPane.getColumnConstraints().addAll(headerColumn, otherColumns, otherColumns);
         isVbound.setPrefWidth(76.0);
-        stopPane.add(new Label("STOP CONDITION"), 0, 0, 3, 1);
+        stopPane.add(new Label("Stop condition (m): "), 0, 0, 3, 1);
         stopPane.add(isVbound, 0, 1, 1, 1);
         stopPane.add(stop, 1, 1, 2, 1);
         
         Region space = new Region();
         VBox.setVgrow(space, Priority.ALWAYS);
         
-        exMessage.setStyle("-fx-font-size: 12; -fx-text-fill: red;");
+        exMessage.setStyle("-fx-font-size: 18;");
         exMessage.setWrapText(true);
         
+        startButton.setTranslateY(-50);
         startButton.setPrefSize(300.0, 100.0);
-        startButton.setStyle("-fx-font-size: 30; -fx-font-weight: bold;");
+        startButton.setStyle("-fx-font-size: 30; -fx-font-weight: bold; -fx-font-family: Segoe UI;");
         
-        
+        HBox hbox = new HBox(exMessage);
+        hbox.setAlignment(Pos.CENTER);
+        hbox.setPadding(new Insets(20, 0, 0, 0));
         this.getChildren().addAll(paneTitle,
                 chargePane,
                 fieldPane,
                 stopPane,
-                new HBox(exMessage),
+                hbox,
                 space,
                 startButton
         );

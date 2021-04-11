@@ -7,6 +7,7 @@ package motioncontroller;
 
 import java.util.HashMap;
 import javafx.event.ActionEvent;
+import javafx.scene.paint.Paint;
 import motionview.InputPane;
 import motionview.SimWindow;
 
@@ -65,8 +66,12 @@ public class InputHandler {
     public void onAction(){
         reset();
         getInputs();
-        calculate();
-        setMapValues();
+        if(!hasException){
+            calculate();
+            setMapValues();
+        }else{
+            view.graph.clearData();
+        }
     }
     
     private void getInputs(){
@@ -89,6 +94,16 @@ public class InputHandler {
             else if(mass.equals(0.0)){
                 throw new ZeroMassException();
             }
+            else if(isVbound){
+                if(initPosX > stop){
+                    throw new InvalidPositionException();
+                }
+            }
+            else if(!isVbound){
+                if(initPosY > stop){
+                    throw new InvalidPositionException();
+                }
+            }
 
         } 
         catch (NumberFormatException nfe) {
@@ -103,12 +118,18 @@ public class InputHandler {
             String zmeMessage = "Zero Mass! Please enter a positive mass\n";
             addToErrorString(zmeMessage);
         }
+        catch (InvalidPositionException ipe){
+            String ipeMessage = "                          Invalid position!\nThe initial position is greater than the stop limit\n";
+            addToErrorString(ipeMessage);
+        }
 
         if(hasException){
             view.input.exMessage.setText(exMessage);
+            view.input.exMessage.setTextFill(Paint.valueOf("red"));
         }else{
             exMessage = "Calculated!";
             view.input.exMessage.setText(exMessage);
+            view.input.exMessage.setTextFill(Paint.valueOf("#3672d1"));
         }
     };
     private void calculate(){
@@ -312,6 +333,10 @@ public class InputHandler {
         });
         
     }
+
+    public Boolean getHasException() {
+        return hasException;
+    }
     
     private void addToErrorString(String excString){
         if (!exMessage.contains(excString)) {
@@ -326,6 +351,10 @@ public class InputHandler {
     }
     private class NegativeMassException extends Exception{
         private NegativeMassException() {
+        }
+    }
+    private class InvalidPositionException extends Exception{
+        private InvalidPositionException() {
         }
     }
 }

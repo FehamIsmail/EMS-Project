@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package fieldview;
 
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 
 /**
  *
@@ -27,9 +28,14 @@ public class Grid extends Pane{
         this.setMaxSize((columns*53)+19, (rows*52)+5);
         this.getStyleClass().add("grid");
         
-        
+        createBackground();
         createGrid();
         
+    }
+    
+    private void createBackground(){
+        Rectangle r = new Rectangle(1344, 784, Paint.valueOf("#f7f7f7"));
+        this.insertElement(r);
     }
     
     private void createGrid(){

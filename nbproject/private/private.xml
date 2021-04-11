@@ -3,32 +3,35 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/ElectricFieldSimulation/src/model/Charge.java</file>
-            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/ElectricFieldSimulation/src/images/negative_selected.png</file>
-            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/ElectricFieldSimulation/src/styles/layoutstyles.css</file>
-            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/ElectricFieldSimulation/src/model/ElectricField.java</file>
-            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/ElectricFieldSimulation/src/GUIController/EFController.java</file>
-            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/ElectricFieldSimulation/src/properties/GridProperty.java</file>
-            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/ElectricFieldSimulation/src/view/Grid.java</file>
-            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/ElectricFieldSimulation/src/menu/MenuController.java</file>
-            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/ElectricFieldSimulation/src/menu/MainMenu.java</file>
-            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/ElectricFieldSimulation/src/model/PrefixValue.java</file>
-            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/ElectricFieldSimulation/src/view/ChargeImagesBox.java</file>
-            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/ElectricFieldSimulation/src/model/ChargeImage.java</file>
-            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/ElectricFieldSimulation/src/model/EFVector.java</file>
-            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/ElectricFieldSimulation/src/styles/main-button.css</file>
-            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/ElectricFieldSimulation/src/view/RightBorder.java</file>
-            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/ElectricFieldSimulation/src/model/LinkedButton.java</file>
-            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/ElectricFieldSimulation/src/model/Prefix.java</file>
-            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/ElectricFieldSimulation/src/view/ChargeCreationBox.java</file>
-            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/ElectricFieldSimulation/src/properties/ChargeProperty.java</file>
-            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/ElectricFieldSimulation/src/images/negative.png</file>
-            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/ElectricFieldSimulation/src/properties/PrefixProperty.java</file>
-            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/ElectricFieldSimulation/src/view/SimulationPane.java</file>
-            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/ElectricFieldSimulation/src/electricfieldsimulation/ElectricFieldSimulation.java</file>
-            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/ElectricFieldSimulation/src/view/SmallHBox.java</file>
-            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/ElectricFieldSimulation/src/view/GraphPane.java</file>
-            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/ElectricFieldSimulation/src/properties/NumericProperty.java</file>
+            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/EMS-Project/src/images/vector.png</file>
+            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/EMS-Project/src/fieldmodel/EFVector.java</file>
+            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/EMS-Project/src/fieldview/ChargeCreationBox.java</file>
+            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/EMS-Project/src/fieldview/ElectricFieldPane.java</file>
+            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/EMS-Project/src/menu/MenuController.java</file>
+            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/EMS-Project/src/properties/PrefixProperty.java</file>
+            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/EMS-Project/src/ems/MainEMS.java</file>
+            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/EMS-Project/src/fieldview/RightBorder.java</file>
+            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/EMS-Project/src/properties/DecimalTextFormatter.java</file>
+            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/EMS-Project/src/images/negative.png</file>
+            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/EMS-Project/src/fieldview/Grid.java</file>
+            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/EMS-Project/src/styles/layoutstyles.css</file>
+            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/EMS-Project/src/images/EMS_background.png</file>
+            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/EMS-Project/src/images/vector_resized.png</file>
+            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/EMS-Project/src/motionview/InputPane.java</file>
+            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/EMS-Project/src/fieldmodel/ElectricField.java</file>
+            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/EMS-Project/src/properties/GridProperty.java</file>
+            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/EMS-Project/src/fieldmodel/PrefixValue.java</file>
+            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/EMS-Project/src/fieldmodel/Prefix.java</file>
+            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/EMS-Project/src/motionview/GraphPane.java</file>
+            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/EMS-Project/src/images/negative_selected.png</file>
+            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/EMS-Project/src/properties/ChargeProperty.java</file>
+            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/EMS-Project/src/images/negative_32.png</file>
+            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/EMS-Project/src/fieldview/ChargeImagesBox.java</file>
+            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/EMS-Project/src/fieldmodel/LinkedButton.java</file>
+            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/EMS-Project/src/fieldmodel/ChargeImage.java</file>
+            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/EMS-Project/src/fieldview/GraphPane.java</file>
+            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/EMS-Project/src/fieldview/SmallHBox.java</file>
+            <file>file:/C:/Users/ismai/Documents/NetBeansProjects/EMS-Project/src/properties/NumericProperty.java</file>
         </group>
     </open-files>
 </project-private>

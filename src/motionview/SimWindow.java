@@ -6,7 +6,6 @@
 package motionview;
 
 import javafx.geometry.Insets;
-import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -24,6 +23,7 @@ public class SimWindow extends AnchorPane{
         this.setMaxSize(1200, 800);
         this.setMinSize(1200, 800);
         this.setPadding(new Insets(5));
+        this.getStyleClass().add("main-pane");
         
         AnchorPane.setTopAnchor(input, 0.0);
         AnchorPane.setRightAnchor(input, 0.0);

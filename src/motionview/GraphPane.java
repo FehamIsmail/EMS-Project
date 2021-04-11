@@ -7,7 +7,6 @@ package motionview;
 
 import java.util.ArrayList;
 import javafx.geometry.Insets;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
@@ -17,7 +16,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import javafx.scene.transform.Rotate;
-import javax.xml.bind.annotation.XmlElement;
 
 /**
  *
@@ -38,7 +36,8 @@ public class GraphPane extends AnchorPane{
         
         this.setPrefSize(790.0, 390.0);
         this.setMaxSize(790.0, 390.0);
-        this.setStyle("-fx-background-color: gainsboro; -fx-font-size: 15;");
+        this.getStyleClass().add("motion-vbox");
+        //this.setStyle("-fx-background-color: gainsboro; -fx-font-size: 15;");
         this.setPadding(new Insets(10));
         
         AnchorPane.setTopAnchor(chart, 0.0);
@@ -61,10 +60,10 @@ public class GraphPane extends AnchorPane{
                 
         Label xLabel = new Label("x");
         AnchorPane.setRightAnchor(xLabel, 10.0);
-        AnchorPane.setBottomAnchor(xLabel, 0.0);
+        AnchorPane.setBottomAnchor(xLabel, 10.0);
         
         Label yLabel = new Label("y");
-        AnchorPane.setLeftAnchor(yLabel, 0.0);
+        AnchorPane.setLeftAnchor(yLabel, 10.0);
         AnchorPane.setTopAnchor(yLabel, 0.0);
         
         AnchorPane.setTopAnchor(fieldLines, 15.0);

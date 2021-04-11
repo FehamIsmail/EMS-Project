@@ -11,7 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import fieldmodel.Charge;
-import view.SmallHBox;
+import fieldview.SmallHBox;
 
 /**
  *

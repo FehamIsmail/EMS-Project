@@ -29,10 +29,10 @@ import fieldmodel.EFVector;
 import fieldmodel.ElectricField;
 import fieldmodel.Prefix;
 import fieldmodel.PrefixValue;
-import view.ChargeImagesBox;
-import view.GraphPane;
-import view.RightBorder;
-import view.ElectricFieldPane;
+import fieldview.ChargeImagesBox;
+import fieldview.GraphPane;
+import fieldview.RightBorder;
+import fieldview.ElectricFieldPane;
 
 /**
  *

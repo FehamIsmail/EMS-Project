@@ -28,7 +28,7 @@ public class NumericProperty extends HBox{
         this.label = new Label(label);
         this.unit = new Label(unit);
         this.prefix = new PrefixProperty();
-        this.setAlignment(Pos.BOTTOM_CENTER);
+        this.setAlignment(Pos.BOTTOM_CENTER); 
         this.value.setTextFormatter(new DecimalTextFormatter(0, 3, true, 6));
         
         this.setPadding(new Insets(3, 3, 3, 3));

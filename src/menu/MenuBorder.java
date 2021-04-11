@@ -29,7 +29,6 @@ public class MenuBorder extends BorderPane{
         
         menuItems.getItems().addAll(itemField, itemForce, itemMotion, itemMenu, itemExit);
         menuBar.getMenus().add(menuItems);
-        
         this.setTop(menuBar);
     }
 

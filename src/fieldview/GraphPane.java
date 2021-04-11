@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package fieldview;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 
 /**
  *
@@ -42,7 +43,8 @@ public class GraphPane extends StackPane{
         insertElement(grid);
         
         this.statusLabel = new Label();
-        this.statusLabel.setTranslateY(470);
+        this.statusLabel.setTranslateY(-470);
+        this.statusLabel.setFont(new Font("Segoe UI", 16));
         this.setAlignment(Pos.CENTER);
         this.getStyleClass().add("graph");
         

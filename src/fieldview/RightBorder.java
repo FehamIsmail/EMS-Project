@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package fieldview;
 
 import java.io.FileNotFoundException;
 import javafx.geometry.Pos;
