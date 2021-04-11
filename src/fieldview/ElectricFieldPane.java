@@ -26,8 +26,6 @@ public class ElectricFieldPane extends BorderPane{
         this.grid = new GraphPane(25, 15, size);
         this.border = new RightBorder();
         
-        this.setPrefHeight(1080);
-        this.setPrefHeight(1920);
         this.getStyleClass().add("main-pane");
         
         this.setCenter(grid);

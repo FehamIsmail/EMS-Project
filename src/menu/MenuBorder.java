@@ -25,7 +25,6 @@ public class MenuBorder extends BorderPane{
     private MenuItem itemExit = new MenuItem("Exit");
 
     public MenuBorder() {
-        this.setPrefSize(1920, 1010);
         menuItems.getItems().addAll(itemField, itemForce, itemMotion, itemMenu, itemExit);
         menuBar.getMenus().add(menuItems);
         this.setTop(menuBar);

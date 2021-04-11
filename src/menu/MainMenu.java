@@ -33,7 +33,7 @@ public class MainMenu extends StackPane{
         this.setAlignment(Pos.CENTER);
         setButtons();
         this.setPrefWidth(1920);
-        this.setPrefHeight(1000);
+        this.setPrefHeight(986);
         Image BgImage = new Image("images/EMS_background.png");
         ImageView BgImageView = new ImageView(BgImage);
         BgImageView.setScaleY(0.90);
