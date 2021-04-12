@@ -98,6 +98,7 @@ public class ElectricField {
         else if(sumX < 0 && sumY < 0) newangle =  Math.PI    + newangle;
         else if(sumX < 0 && sumY > 0) newangle =  Math.PI    - newangle;
         else if(sumY == 0 && sumX < 0) newangle = Math.PI    + newangle;
+        else if(sumX == 0 && sumY < 0) newangle = (3/2)*Math.PI + newangle;
         //Creating and returning the sum of electric fields
         return new ElectricField(sumX, sumY, magnitude, newangle);
     }
