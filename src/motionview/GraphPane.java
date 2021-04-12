@@ -119,8 +119,8 @@ public class GraphPane extends AnchorPane{
     
     //Pane that represents the direction of the electric field.
     private class FieldPane extends AnchorPane{
-        private final int width = 698;
-        private final int height = 303;
+        private final int width = 710;
+        private final int height = 315;
         private Pane hPane = new Pane();
         private Pane vPane = new Pane();
         private ArrayList<Arrow> arrows = new ArrayList(6);
@@ -230,7 +230,7 @@ public class GraphPane extends AnchorPane{
 
         @Override
         public String toString(Number object) {
-            return String.format("%.3g", object.doubleValue());
+            return String.format("%.2g", object.doubleValue());
         }
 
         @Override
