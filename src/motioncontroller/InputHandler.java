@@ -194,7 +194,7 @@ public class InputHandler {
             diffTime = diffY/initVelY;
             
         }
-        if(diffTime<0){
+        if(diffTime<0 || diffTime.isNaN()){
             diffTime = Double.POSITIVE_INFINITY;
         }
         
