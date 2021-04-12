@@ -78,7 +78,7 @@ public class InputPane extends VBox{
         chargePane.setVgap(3);
         chargePane.setMinWidth(width);chargePane.setMaxWidth(width);
         chargePane.getColumnConstraints().addAll(headerColumn, otherColumns, otherColumns);
-        Label chargeLabel = new Label("Charge properties");
+        Label chargeLabel = new Label("Charge Properties");
         chargeLabel.setStyle("-fx-font-size: 16; fx-font-family: Segoe UI;");
         chargeLabel.setUnderline(true);
         chargePane.add(chargeLabel, 0, 0, 3, 1);
@@ -93,7 +93,7 @@ public class InputPane extends VBox{
         fieldPane.setVgap(3);
         fieldPane.setMinWidth(width);fieldPane.setMaxWidth(width);
         fieldPane.getColumnConstraints().addAll(headerColumn, otherColumns, otherColumns);
-        Label fieldLabel = new Label("Field properties");
+        Label fieldLabel = new Label("Field Properties");
         fieldLabel.setStyle("-fx-font-size: 16; fx-font-family: Segoe UI;");
         fieldLabel.setUnderline(true);
         fieldPane.add(fieldLabel, 0, 0, 3, 1);
@@ -107,7 +107,7 @@ public class InputPane extends VBox{
         stopPane.setMinWidth(width);stopPane.setMaxWidth(width);
         stopPane.getColumnConstraints().addAll(headerColumn, otherColumns, otherColumns);
         isVbound.setPrefWidth(76.0);
-        Label stopLabel = new Label("Stop condition (m): ");
+        Label stopLabel = new Label("Stop Condition :");
         stopLabel.setUnderline(true);
         stopLabel.setStyle("-fx-font-size: 16; fx-font-family: Segoe UI;");
         stopPane.add(stopLabel, 0, 0, 3, 1);
