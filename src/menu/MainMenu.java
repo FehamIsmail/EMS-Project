@@ -5,11 +5,15 @@
  */
 package menu;
 
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -27,6 +31,7 @@ public class MainMenu extends StackPane{
     private Button forceButton = new Button("Electric Force Simulation");
     private Button motionButton = new Button("Charge Motion Simulation");
     private Button exitButton = new Button("Exit");
+    private Hyperlink documentation = new Hyperlink();
     
     
     public MainMenu(){
@@ -34,15 +39,30 @@ public class MainMenu extends StackPane{
         setButtons();
         this.setPrefWidth(1920);
         this.setPrefHeight(986);
+        setDocumentationLink();
         Image BgImage = new Image("images/EMS_background.png");
-        ImageView BgImageView = new ImageView(BgImage);
-        BgImageView.setScaleY(0.90);
         
-                
-        
-        
-        this.setBackground(new Background(new BackgroundImage(BgImageView.getImage(), BackgroundRepeat.NO_REPEAT,
+        this.setBackground(new Background(new BackgroundImage(BgImage, BackgroundRepeat.NO_REPEAT,
                            BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
+    }
+    
+    private void setDocumentationLink(){
+        documentation.setText("Documentation");
+        documentation.setStyle("-fx-font-family: Georgia; -fx-font-weight: bold;-fx-font-size: 24px; -fx-text-fill: #206eac");
+        documentation.setOnAction(e ->{
+            if(Desktop.isDesktopSupported()){
+                try{
+                    Desktop.getDesktop().browse(new URI("https://docs.google.com/document/d/1MzmXXhk0cH8QYQknbIciqSAlZWjQCNmeFYiLl3iJsr0/edit?usp=sharing"));
+                }catch(IOException e1){
+                    e1.printStackTrace();
+                }catch(URISyntaxException e1){
+                    e1.printStackTrace();
+                }
+            }
+        });
+        documentation.setTranslateY(410);
+        documentation.setTranslateX(740);
+        this.insertElement(documentation);
     }
     
     private void setButtons(){

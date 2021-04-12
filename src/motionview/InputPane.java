@@ -78,7 +78,7 @@ public class InputPane extends VBox{
         chargePane.setVgap(3);
         chargePane.setMinWidth(width);chargePane.setMaxWidth(width);
         chargePane.getColumnConstraints().addAll(headerColumn, otherColumns, otherColumns);
-        Label chargeLabel = new Label("Charge Properties");
+        Label chargeLabel = new Label("Charge properties");
         chargeLabel.setStyle("-fx-font-size: 16; fx-font-family: Segoe UI;");
         chargeLabel.setUnderline(true);
         chargePane.add(chargeLabel, 0, 0, 3, 1);
@@ -107,7 +107,10 @@ public class InputPane extends VBox{
         stopPane.setMinWidth(width);stopPane.setMaxWidth(width);
         stopPane.getColumnConstraints().addAll(headerColumn, otherColumns, otherColumns);
         isVbound.setPrefWidth(76.0);
-        stopPane.add(new Label("Stop condition (m): "), 0, 0, 3, 1);
+        Label stopLabel = new Label("Stop condition (m): ");
+        stopLabel.setUnderline(true);
+        stopLabel.setStyle("-fx-font-size: 16; fx-font-family: Segoe UI;");
+        stopPane.add(stopLabel, 0, 0, 3, 1);
         stopPane.add(isVbound, 0, 1, 1, 1);
         stopPane.add(stop, 1, 1, 2, 1);
         
