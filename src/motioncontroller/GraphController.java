@@ -119,6 +119,11 @@ public class GraphController {
         double accelY = valueMap.get("accelY");
         String dir = "";
         
+        if(valueMap.get("charge")<0){
+            accelX = -accelX;
+            accelY = -accelY;
+        }
+        
         if(accelX<0){ //left
             dir = "left";
         }
